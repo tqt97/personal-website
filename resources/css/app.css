@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.x-cloak {
+    display: none;
+}
+.theme{
+    @apply text-gray-800 bg-white dark:text-gray-50 dark:bg-gray-800;
+}
+
+.dark-theme{
+    @apply text-gray-50 bg-gray-800 dark:text-gray-800 dark:bg-gray-50;
+}
+
+.light-theme{
+    @apply text-gray-800 bg-white dark:text-gray-50 dark:bg-gray-800;
+}
+
+.pad-x-4{
+    @apply px-4 md:px-2;
+}
+
+.primary-color{
+    @apply text-blue-600;
+}

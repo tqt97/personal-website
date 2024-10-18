@@ -1,30 +1,38 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth dark" x-data="{ darkMode: $persist(false) }"
+    :class="{ 'dark': darkMode === true }">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
-        </div>
-    </body>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="relative font-sans text-gray-900 antialiased theme bg-gradient-to-r bg-opacity-5 from-blue-50/10 via-slate-50/10 to-gray-50/10" x-cloak>
+    {{-- <div class="absolute left-0 top-0 -z-10 h-full w-full"> --}}
+        {{-- <img alt="bg" loading="lazy" width="1920" height="1036" decoding="async" data-nimg="1"
+            class="absolute left-0 top-0 -z-10 h-[100%] w-full opacity-10" src="{{ asset('assets/images/hero-default.webp') }}"
+            style="color: transparent;"> --}}
+        {{-- <div class="absolute left-0 top-0 -z-10 h-full w-full bg-gradient-to-b from-transparent to-gray">
+        </div> --}}
+
+        {{-- <div class="absolute left-0 top-0 -z-10 bg-gradient-to-b from-purple-600 to-blue-600"></div> --}}
+
+    {{-- </div> --}}
+    @include('layouts.partials.nav')
+    <main class="my-6 lg:my-10">
+        {{ $slot }}
+    </main>
+    @include('layouts.partials.footer')
+</body>
+
 </html>
